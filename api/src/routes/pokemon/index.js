@@ -28,7 +28,7 @@ router.post('/pokemons', async (req, res) => {
     // Crear el Pokémon en la base de datos
     const createdPokemon = await Pokemon.create({
       Nombre: apiData.name,
-      Imagen: apiData.sprites.front_default,
+      Imagen: apiData.sprites.other['official-artwork'].front_default,
       Vida: apiData.stats[0].base_stat,
       Ataque: apiData.stats[1].base_stat,
       Defensa: apiData.stats[2].base_stat,
@@ -65,18 +65,18 @@ router.post('/pokemons', async (req, res) => {
 });
 
 // Ruta para obtener el detalle de un Pokémon
-router.get('/pokemons/:id', async (req, res) => {
+router.get('/pokemons/:idPokemon', async (req, res) => {
   try {
-    const { id } = req.params;
+    const { idPokemon } = req.params;
 
     // Intentar obtener el Pokémon de la base de datos
-    const dbPokemon = await Pokemon.findByPk(id, {
+    const dbPokemon = await Pokemon.findByPk(idPokemon, {
       include: Type,
     });
 
     // Si el Pokémon no existe en la base de datos, obtenerlo de la API
     if (!dbPokemon) {
-      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`);
       const apiData = response.data;
 
       // Obtener los nombres de los tipos del Pokémon desde la API
@@ -97,7 +97,7 @@ router.get('/pokemons/:id', async (req, res) => {
       const apiPokemon = {
         ID: apiData.id,
         Nombre: apiData.name,
-        Imagen: apiData.sprites.front_default,
+        Imagen: apiData.sprites.other['official-artwork'].front_default,
         Vida: apiData.stats[0].base_stat,
         Ataque: apiData.stats[1].base_stat,
         Defensa: apiData.stats[2].base_stat,

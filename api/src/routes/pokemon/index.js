@@ -5,8 +5,8 @@ const { Pokemon, Type } = require('../../db');
 
 router.get('/pokemons', async (req, res) => {
   try {
-    const pokemons = await Pokemon.findAll();
-    res.json(pokemons);
+    const pokemons = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=12`);
+    res.json(pokemons.data);
   } catch (error) {
     console.error('Error al obtener los pokemons:', error);
     res.status(500).json({ error: 'Error al obtener los pokemons' });

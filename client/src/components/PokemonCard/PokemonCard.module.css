@@ -1,0 +1,25 @@
+.CardContainer{
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin: 16px;
+  width: 250px;
+  display: inline-block;
+}
+.PokemonImage {
+  max-width: 100%;
+}
+.PokemonName {
+  margin: 8px 0;
+}
+.PokemonTypes {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.PokemonType {
+  background-color: #f2f2f2;
+  color: #333;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin: 4px;
+}

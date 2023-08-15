@@ -1,0 +1,70 @@
+.homePageContainer {
+  width: 1200px;
+  text-align: center;
+  padding: 20px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Estilo para boton de navegacion*/
+.navButton {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  color: black;
+}
+
+.navButton:hover {
+  background-color: #ff9900;
+}
+
+.pageTitle {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  margin-top: 0;
+  color: black;
+}
+
+.pokemonList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 0;
+}
+.BarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+.paginationButtons{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .pokemonList {
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    padding: 0;
+  }
+  .paginationButtons{
+    width: 100vw;
+  }
+  .homePageContainer{
+    width: 100vw;
+    padding: 0;
+  }
+}

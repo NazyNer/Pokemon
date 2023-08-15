@@ -1,11 +1,10 @@
 import React from 'react';
-function LandingPage() {
-  return(
-    <div>
-      <h1>Atrapalos a todos!!</h1>
-      <div><button>Start</button></div>
-    </div>
-  );
-}
+import { Link } from 'react-router-dom';
+import style from './LandingPage.module.css';
+export default function LandingPage() {
 
-export default  LandingPage;
+  return<div>
+      <h1>Atrapalos a todos!!</h1>
+      <div><Link className={style.navButton} to={`/home`}>Pokemon</Link></div>
+    </div>;
+}

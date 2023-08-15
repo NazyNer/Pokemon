@@ -1,0 +1,184 @@
+.formContainer {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  margin: 20px auto;
+  max-width: 400px; /* Limitar el ancho máximo del formulario */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para los campos de entrada */
+.formInput {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+/* Estilo para boton de navegacion*/
+.navButton {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  color: black;
+}
+
+.navButton:hover {
+  background-color: #ff9900;
+}
+
+/* Estilos para el botón de enviar */
+.submitButton {
+  background-color: #ffcc01;
+  color: #333;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Estilos para las opciones de tipo */
+.typeOptions {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  margin-bottom: 10px;
+}
+
+.typeOption {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Estilos responsivos para dispositivos móviles */
+@media (max-width: 600px) {
+  .formContainer {
+    max-width: 100%; /* Ancho completo en dispositivos móviles */
+  }
+
+  .typeOptions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .typeOption {
+    margin-bottom: 5px;
+    width: 48%; /* Dos columnas en dispositivos móviles */
+  }
+}
+
+.normal {
+  background-color: #a8a878;
+  color: white;
+}
+
+.fighting {
+  background-color: #c03028;
+  color: white;
+}
+
+.flying {
+  background-color: #a890f0;
+  color: white;
+}
+
+.poison {
+  background-color: #a040a0;
+  color: white;
+}
+
+.ground {
+  background-color: #e0c068;
+  color: black;
+}
+
+.rock {
+  background-color: #b8a038;
+  color: white;
+}
+
+.bug {
+  background-color: #a8b820;
+  color: black;
+}
+
+.ghost {
+  background-color: #705898;
+  color: white;
+}
+
+.steel {
+  background-color: #b8b8d0;
+  color: black;
+}
+
+.fire {
+  background-color: #f08030;
+  color: white;
+}
+
+.water {
+  background-color: #6890f0;
+  color: white;
+}
+
+.grass {
+  background-color: #78c850;
+  color: white;
+}
+
+.electric {
+  background-color: #f8d030;
+  color: black;
+}
+
+.psychic {
+  background-color: #f85888;
+  color: white;
+}
+
+.ice {
+  background-color: #98d8d8;
+  color: black;
+}
+
+.dragon {
+  background-color: #7038f8;
+  color: white;
+}
+
+.dark {
+  background-color: #705848;
+  color: white;
+}
+
+.fairy {
+  background-color: #ee99ac;
+  color: black;
+}
+
+.default {
+  background-color: #cccccc;
+  color: black;
+}
+.unknown{
+  background-color: #999;
+  color: white;
+}
+.shadow{
+  background-color: #333;
+  color: white;
+}

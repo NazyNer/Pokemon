@@ -1,19 +1,20 @@
 import style from './PokemonCard.module.css';
-
+import { Link } from 'react-router-dom';
 
 function PokemonCard ({ pokemon }) {
-  const { Nombre, Imagen, Tipos } = pokemon;
-
+  const { name, image, types } = pokemon;
   return (
-    <div className={style.CardContainer}>
-      <img className={style.PokemonImage} src={Imagen} alt={Nombre} />
-      <h3 className={style.PokemonName} >{Nombre}</h3>
-      <div className={style.PokemonTypes}>
-        {Tipos.map((tipo, index) => (
-          <span className={style.PokemonType} key={index}>{tipo}</span>
+    <Link to={`/detail/${pokemon.id}`} className={style.cardLink}>
+    <div className={style.card}>
+      <img className={style.cardImage} src={image} alt={name} />
+      <h3 className={style.cardName} >{name}</h3>
+      <div className={style.cardTypes}>
+        {types.map((tipo, index) => (
+          <span key={index} className={`${style.cardType} ${style[tipo]}`}>{tipo}</span>
         ))}
       </div>
     </div>
+    </Link>
   );
 };
 

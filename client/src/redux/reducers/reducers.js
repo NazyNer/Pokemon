@@ -1,4 +1,4 @@
-import { SET_POKEMONS } from '../actions/actions';
+import { setPokemons } from '../actions/actions';
 
 const initialState = {
   pokemons: [],
@@ -6,7 +6,7 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
-    case SET_POKEMONS:
+    case setPokemons:
       return { ...state, pokemons: action.payload };
     default:
       return state;

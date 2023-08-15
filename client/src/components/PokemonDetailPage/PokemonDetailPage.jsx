@@ -6,7 +6,6 @@ import style from './PokemonDetail.module.css'
 function PokemonDetailPage() {
   const { idPokemon } = useParams();
   const [pokemonDetail, setPokemonDetail] = useState(null);
-
   useEffect(() => {
     const fetchPokemonDetail = async () => {
       try {
@@ -38,11 +37,16 @@ function PokemonDetailPage() {
         <p>Altura: {pokemonDetail.Altura / 10}m</p>
         <p>Peso: {pokemonDetail.Peso}</p>
         <p>Tipo:
-            {pokemonDetail.Tipos.map((type, index) => (
+            {pokemonDetail.types ? (pokemonDetail.types.map((type, index) => (
               <span key={index} className={`${style.pokemonType} ${style[type.nombre.toLowerCase()]}`}>
                 {type.nombre}
               </span>
-            ))}
+            ))):(pokemonDetail.Tipos.map((type, index) => (
+              <span key={index} className={`${style.pokemonType} ${style[type.nombre.toLowerCase()]}`}>
+                {type.nombre}
+              </span>
+            )))
+            }
         </p>
       </div>
     </div>

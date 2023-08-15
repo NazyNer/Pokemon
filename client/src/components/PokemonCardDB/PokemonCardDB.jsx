@@ -5,7 +5,7 @@ function PokemonCardDB ({ pokemon }) {
   const { Nombre, Imagen, types } = pokemon;
   const tipos = types.map(type => type.nombre)
   return (
-    <Link to={`/detail/${pokemon.id}`} className={style.cardLink}>
+    <Link to={`/detail/${pokemon.ID}`} className={style.cardLink}>
     <div className={style.card}>
       <img className={style.cardImage} src={Imagen} alt={Nombre} />
       <h3 className={style.cardName} >{Nombre}</h3>

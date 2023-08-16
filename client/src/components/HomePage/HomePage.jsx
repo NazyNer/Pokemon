@@ -5,6 +5,7 @@ import style from './HomePage.module.css';
 import PokemonCard from '../PokemonCard/PokemonCard';
 import Navbar from '../Navbar/Navbar';
 import PokemonCardDB from '../PokemonCardDB/PokemonCardDB';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 
 function HomePage({types}) {
@@ -12,6 +13,7 @@ function HomePage({types}) {
   const [originalPokemons, setOriginalPokemons] = useState([]);
   const [pokemonChunks, setPokemonChunks] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
+  const [loading, setLoading] = useState(true);
   const [sortBy, setSortBy] = useState(null);
   const [selectedType, setSelectedType] = useState(null);
   const [selectedSource, setSelectedSource] = useState(null);
@@ -44,6 +46,7 @@ function HomePage({types}) {
           ...detailedPokemonData,
         ];
         setPokemons(combinedPokemons)
+        setLoading(false);
         setOriginalPokemons(combinedPokemons);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -132,7 +135,8 @@ function HomePage({types}) {
 
   return (
     <div className={style.homePageContainer}>
-      <h1 className={style.pageTitle}>Home Page</h1>
+      <h1 className={style.pageTitle}>Pokedex</h1>
+      <Link className={style.navButton} to={`/`}>volver</Link>
       <Link to="/CreatePokemon" className={style.navButton} >
         Crear Pokemon
       </Link>
@@ -160,7 +164,7 @@ function HomePage({types}) {
         </button>
       </div>
       <ul className={style.pokemonList}>
-        {console.log(pokemonChunks[currentPage])}
+      {loading ? <LoadingSpinner /> :(<>
         {pokemonChunks.length > 0 ? (
           (pokemonChunks[currentPage].map((pokemon, index) => (
             pokemon.name !== undefined ? (<PokemonCard key={index} pokemon={pokemon} />) : (<PokemonCardDB key={index} pokemon={pokemon} />)
@@ -168,6 +172,7 @@ function HomePage({types}) {
         ) : (
           <p>No hay Pokémon disponibles.</p>
         )}
+      </>)}
       </ul>
     </div>
   );

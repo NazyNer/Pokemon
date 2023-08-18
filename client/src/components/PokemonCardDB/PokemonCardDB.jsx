@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom';
 
 function PokemonCardDB ({ pokemon }) {
   const { Nombre, Imagen, types } = pokemon;
-  const tipos = types.map(type => type.nombre)
+  var tipos = {}
+  if (types[0].nombre) {
+    tipos = types.map(type => type.nombre)
+  } else{
+    tipos = types;
+  };
   return (
     <Link to={`/detail/${pokemon.ID}`} className={style.cardLink}>
     <div className={style.card}>

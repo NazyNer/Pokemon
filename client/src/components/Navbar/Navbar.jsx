@@ -12,6 +12,8 @@ function Navbar({
   sortBy,
   handleSort,
   handleClearSort,
+  searchTerm,
+  setSearchTerm
 }) {
   const [mobileMenuActive, setMobileMenuActive] = useState(false);
 
@@ -28,10 +30,9 @@ function Navbar({
         </div>
         <div className={`${style.NavbarMenu} ${mobileMenuActive ? style.MobileMenuActive : ''}`}>
           <div className={style.NavbarItem}>
-            <SearchBar onSearch={handleSearchResult} />
+            <SearchBar onSearch={handleSearchResult} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
           </div>
           <div className={style.NavbarItem}>
-            <label htmlFor="typeSelect">Filtrar por tipo:</label>
             <select id="typeSelect" value={selectedType || ''} onChange={handleTypeChange}>
               <option value="">Todos los tipos</option>
               {types.map(type => (
@@ -42,7 +43,6 @@ function Navbar({
             </select>
           </div>
           <div className={style.NavbarItem}>
-            <label htmlFor="sourceSelect">Filtrar por origen:</label>
             <select id="sourceSelect" value={selectedSource || ''} onChange={handleSourceChange}>
               <option value="">Todos los origenes</option>
               <option value="DB">Database</option>
@@ -51,19 +51,17 @@ function Navbar({
           </div>
           <div className={style.NavbarItem}>
             <button
-              className={sortBy === 'alphabetical' ? style.activeSortButton : ''}
               onClick={() => handleSort('alphabetical')}
             >
-              Ordenar alfabeticamente
+              {sortBy !== "Z-A" ? "a-z" : "z-a"}
             </button>
             <button
-              className={sortBy === 'attack' ? style.activeSortButton : ''}
               onClick={() => handleSort('attack')}
             >
-              Ordenar por ataque
+              {sortBy !== "descendente" ? "ataque(descendente)" : "ataque(ascendente)"}
             </button>
-            <button onClick={handleClearSort}>Limpiar ordenamiento</button>
           </div>
+            <button onClick={handleClearSort}>Limpiar</button>
         </div>
       </div>
     </nav>

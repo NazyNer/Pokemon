@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 import style from './SearchBar.module.css'
 
-function SearchBar({ onSearch }) {
-  const [searchTerm, setSearchTerm] = useState('');
+function SearchBar({ onSearch, searchTerm, setSearchTerm }) {
 
   const handleSearch = async () => {
     try {
@@ -11,9 +10,11 @@ function SearchBar({ onSearch }) {
         onSearch({Error: "No escribiste nada..."})
         return;
       }
-
+      if (!isNaN(searchTerm)) {
+        onSearch({Error: "No se puede buscar por numero"})
+        return;
+      }
       const response = await axios.get(`http://localhost:3001/pokemon/name?name=${searchTerm}`);
-      console.log(response.data)
       onSearch(response.data);
     } catch (error) {
       onSearch({Error: 'No se encontro el pokemon "'+ searchTerm + '"' });

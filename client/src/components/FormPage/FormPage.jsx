@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import style from './FormPage.module.css';
 
 function FormPage({ types }) {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     image: '',
@@ -36,8 +37,9 @@ function FormPage({ types }) {
     const selectedType = event.target.value;
     if (selectedTypes.includes(selectedType)) {
       setSelectedTypes(selectedTypes.filter(type => type !== selectedType));
+    }else if (selectedTypes.length > 2) {
+      alert("No puedes seleccionar mas de 3 tipos")
     } else {
-      console.log(selectedTypes);
       setSelectedTypes([...selectedTypes, selectedType]);
     }
   };
@@ -50,13 +52,13 @@ function FormPage({ types }) {
     return;
   }
     try {
-      console.log(selectedTypes);
       const FormSend = formData;
       FormSend.tipos = selectedTypes;
       FormSend.altura = FormSend.altura * 10
       console.log(FormSend);
       const response = await axios.post('http://localhost:3001/pokemons', FormSend);
-      alert('Pokemon creado: ', response);
+      console.log(response);
+      alert('Pokemon creado: ', response.data.name);
       // Limpiar campos después de la creación exitosa
       setFormData({
         name: '',
@@ -65,11 +67,12 @@ function FormPage({ types }) {
         ataque: '',
         defensa: '',
         velocidad: '',
-        altura: '' * 10,
+        altura: '',
         peso: '',
         tipos: [],
       });
       setSelectedTypes([]);
+      navigate('/home');
     } catch (error) {
       console.error('Error al crear el Pokemon:', error);
     }
@@ -80,7 +83,7 @@ function FormPage({ types }) {
     <div className={style.formContainer}>
       <Link to="/Home" className={style.navButton}>Volver</Link>
       <h1>Form Page</h1>
-      <p>Los campos con * son oblicatorios</p>
+      <p>Los campos con * son obligatorios</p>
       <form  onSubmit={handleSubmit}>
         <input className={style.formInput} type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Nombre*" />
         <input className={style.formInput} type="text" name="image" value={formData.image} onChange={handleInputChange} placeholder="Imagen URL*" />

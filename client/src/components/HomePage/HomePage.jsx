@@ -186,13 +186,13 @@ function HomePage({ types }) {
       />
       {/* Botones de paginacion */}
       <div className={style.paginationButtons}>
-        <button onClick={handlePrevPage} disabled={currentPage === 0}>
+        <button className={style.button} onClick={handlePrevPage} disabled={currentPage === 0}>
           Anterior
         </button>
-        <h2>{currentPage}</h2>
+        <h2>{currentPage === 0 ? '' : currentPage}</h2>
         <h1>{currentPage + 1}</h1>
-        <h2>{currentPage + 2}</h2>
-        <button onClick={handleNextPage} disabled={currentPage === pokemonChunks.length - 1}>
+        <h2>{currentPage === pokemonChunks.length - 1 ? '' : currentPage + 2 }</h2>
+        <button className={style.button} onClick={handleNextPage} disabled={currentPage === pokemonChunks.length - 1}>
           Siguiente
         </button>
       </div>
